@@ -40,3 +40,52 @@
 .read-the-docs {
   color: #888;
 }
+
+.personalInfo{
+display: flex;
+flex-direction: column;
+gap: 2rem;  
+}
+.input-label-cont{
+display: flex;
+flex-direction: column;
+align-items: start;    
+}
+label{
+/* position: relative;   */
+display: flex;
+flex-direction: column;
+align-items: start;  
+z-index: 1;
+margin-left: .4em;
+}
+input{
+  /* position: absolute; */
+  background-color: rgba(255, 255, 255, 0);
+  /* top: 20px;
+  left: -2px;
+  z-index: 5; */
+  border: rgba(173, 216, 230, 0.253) 1px solid;
+  padding: .5em;
+}
+.person-info-row{
+display: flex;  
+padding: 3em 0 0px 0;
+align-items: start;
+justify-content: start;
+gap: 1rem;
+}
+
+input:hover{
+border-bottom: blue 2px solid;  
+}
+input:focus{
+outline: none; 
+border: none; 
+border-bottom: blue 2px solid;
+color: black;  
+}
+
+input:focus::placeholder{
+color: rgb(70, 70, 228);  
+}
