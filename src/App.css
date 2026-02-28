@@ -1,8 +1,7 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 2.5rem;
+  text-align: start;
 }
 
 .logo {
@@ -45,6 +44,8 @@
 display: flex;
 flex-direction: column;
 gap: 2rem;  
+margin: 0 0 2.5rem 0;
+align-content: start;
 }
 .input-label-cont{
 display: flex;
@@ -88,4 +89,13 @@ color: black;
 
 input:focus::placeholder{
 color: rgb(70, 70, 228);  
+}
+.dates-there{
+display: flex;
+gap: 1rem  ;
+align-items: center;
+}
+.job-title{
+display: flex;
+flex-direction: column;  
 }
