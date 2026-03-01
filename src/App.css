@@ -66,7 +66,7 @@ input{
   /* top: 20px;
   left: -2px;
   z-index: 5; */
-  border: rgba(173, 216, 230, 0.253) 1px solid;
+  border: rgba(173, 216, 230, 0.377) 1px solid;
   padding: .5em;
 }
 .person-info-row{
@@ -76,7 +76,11 @@ align-items: start;
 justify-content: start;
 gap: 1rem;
 }
-
+input:valid,
+input:focus:valid,
+input:hover:valid{
+border-bottom: green 2px solid;  
+}
 input:hover{
 border-bottom: blue 2px solid;  
 }
@@ -93,9 +97,18 @@ color: rgb(70, 70, 228);
 .dates-there{
 display: flex;
 gap: 1rem  ;
-align-items: center;
+align-items: start;
+flex-direction: column;
 }
 .job-title{
 display: flex;
 flex-direction: column;  
+}
+.start-holder{
+  display: flex;
+}
+.end-date{
+  display: flex;
+
+  align-items: center;
 }
