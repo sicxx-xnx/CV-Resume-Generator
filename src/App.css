@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 2.5rem;
+  
   text-align: start;
 }
 
@@ -40,7 +40,8 @@
   color: #888;
 }
 
-.personalInfo{
+.personalInfo,
+.jobHistory{
 display: flex;
 flex-direction: column;
 gap: 2rem;  
@@ -68,6 +69,7 @@ input{
   z-index: 5; */
   border: rgba(173, 216, 230, 0.377) 1px solid;
   padding: .5em;
+  
 }
 .person-info-row{
 display: flex;  
@@ -102,13 +104,52 @@ flex-direction: column;
 }
 .job-title{
 display: flex;
-flex-direction: column;  
+flex-direction: column;
+width: 50%;  
 }
 .start-holder{
   display: flex;
+  gap: 1rem  ;
+  width: 100%;
 }
 .end-date{
   display: flex;
-
   align-items: center;
+}
+
+.enddateinfoholder,
+.start-date-holder{
+      display: flex;
+    /* text-align: center; */
+    flex-direction: column;
+    min-height: 5rem;
+    width: 42.24%;
+}
+.info-entry-container{
+  border: black 3px solid;
+  width: 100%;
+  padding: 1rem;
+  overflow: scroll;
+  height: 90vh;
+  scrollbar-shadow-color: #d33a3a;
+}
+input[type="month" i]{
+  padding-inline-start: 0px;
+} 
+.info-entry-container::-webkit-scrollbar {
+  width:10px;
+}
+ 
+.info-entry-container::-webkit-scrollbar-track {
+  background: rgb(248, 248, 248);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.info-entry-container::-webkit-scrollbar-thumb {
+  background: rgb(1, 3, 10);
+  border: 2px solid rgb(106, 106, 236);
+}
+
+.job-desc{
+  white-space: pre-line;
 }
