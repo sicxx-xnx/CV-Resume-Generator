@@ -1,5 +1,5 @@
 
-function PersonalInfoInput(props){
+export function PersonalInfoInput(props){
 return(
 <div className="input-label-cont"><label htmlFor={props.name}> {props.text} </label>
 <input type={props.type} name={props.name} id={props.name} placeholder = {props.text} value={props.value} onChange={props.change} required/>  

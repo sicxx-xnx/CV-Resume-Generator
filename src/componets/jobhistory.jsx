@@ -11,6 +11,10 @@ function Job (props){
             <label htmlFor="title">Job Title*</label>
             <input type="text" name="jobName" id="title" data-id={count} value={props.value.jobName} placeholder="Job Title" required
                 onChange={props.change}/>
+
+            <label htmlFor="company">Company</label> 
+            <input type="text" name="companyName" id="company" value={props.value.companyName} placeholder="Company Name" required
+            onChange={props.change} />   
         </div>
         <div className="dates-there person-info-row">
             <div className="start-holder">
