@@ -1,20 +1,21 @@
 function JobUi(props){
 return (
+    <><h2>Professional Experience</h2>
     <ul>
         {props.values.map(
             (job)=>(
-                <li key={job.jobName}>
+                <li className="jobList" style={{listStyle:"none"}} key={job.jobName}>
                     <div className="job">
-                        <div className=""><h2>{job.jobName}</h2><button type="button" onClick={()=>{props.setAllJobs(props.values.filter((a)=>{a.id !== job.id}))}}>x</button></div>
-                        <h3>{job.companyName}</h3>
-                        <div className="border"></div>
-                        <div className=""><p><i>{job.startDate} to {job.endDate?job.endDate:"Current job"}</i></p></div>
-                        <div className=""><p className="job-desc">{job.desc}</p></div>
+                        <div className="jobTitleDiv"><h2>{job.jobName}</h2><button type="button" onClick={()=>{props.setAllJobs(props.values.filter((a)=>{return a.id !== job.id}))}}>x</button></div>
+                        <div className="" style={{display:"flex",marginTop:"-1rem", gap:"1rem", alignItems:"center"}}><h3>{job.companyName}</h3><p><i>{job.startDate} / {job.endDate?job.endDate:"Current job"}</i></p></div>
+                        <div className="" style={{marginTop:"-1rem"}}><p className="job-desc">{job.desc}</p></div>
                     </div>
                 </li>
             )
         )}
     </ul>
+    <div className="" style={{height:".2rem", backgroundColor:"blue" }}></div>
+    </>
 )    
 }
 

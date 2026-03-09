@@ -1,0 +1,33 @@
+.personalInfoResume {
+ background-color: rgb(11, 11, 99); 
+ color: white;  
+ display: flex;
+padding-left: 4rem;
+padding-right: 4rem;
+padding-top: 2rem;
+padding-bottom: 2rem;
+ flex-direction: column;
+ line-height: 2px;
+ 
+}
+.phone{
+background-image: url("./assets/phone-flip-alt-svgrepo-com.svg");
+height: 16px;
+width: 16px;   
+display: inline-block;
+background-size: contain; 
+filter: invert(100%) sepia(62%) saturate(30%) hue-rotate(28deg) brightness(114%) contrast(92%);
+
+}
+.jobTitleDiv{
+    display: flex;
+    gap: .9rem;
+align-items: center;
+
+}
+.jobTitleDiv button{
+ padding: .5rem;   
+ width: unset;
+ height: 50%;
+ width: 10%;
+}

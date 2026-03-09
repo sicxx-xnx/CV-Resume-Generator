@@ -1,10 +1,11 @@
 #root {
-  max-width: 1280px;
-  
+  box-sizing: border-box;
   text-align: start;
 }
 button{
   width: 100%;
+  padding: .5rem;
+  border-radius: 1rem;
 }
 .logo {
   height: 6em;
@@ -46,8 +47,8 @@ button{
 .jobHistory{
 display: flex;
 flex-direction: column;
-gap: 2rem;  
-margin: 0 0 2.5rem 0;
+gap: 1rem;  
+margin: 0 0 0.5rem 0;
 align-content: start;
 }
 .input-label-cont{
@@ -64,14 +65,16 @@ z-index: 1;
 margin-left: .5em;
 }
 input,
-select{
+select,
+textarea{
   /* position: absolute; */
   background-color: rgba(255, 255, 255, 0);
   /* top: 20px;
   left: -2px;
   z-index: 5; */
-  border: rgba(173, 216, 230, 0.377) 1px solid;
+  border: rgba(173, 216, 230, 0.6) 1px solid;
   padding: .5em;
+  outline: none;
   
 }
 .person-info-row{
@@ -83,14 +86,18 @@ gap: 1rem;
 }
 input:valid,
 select:valid,
+textarea:valid
 select:active:valid,
+textarea:active:valid
 input:focus:valid,
 input:hover:valid,
-select:hover:valid{
+select:hover:valid,
+textarea:hover:valid{
 border-bottom: green 2px solid;  
 }
 input:hover,
-select:hover{
+select:hover,
+textarea:hover{
 border-bottom: blue 2px solid;  
 }
 input:focus,
@@ -123,6 +130,9 @@ width: 50%;
 .end-date{
   display: flex;
   align-items: center;
+  justify-content: end;
+  flex-flow: row-reverse;
+  gap: .5rem;
 }
 
 .enddateinfoholder,
@@ -135,15 +145,16 @@ width: 50%;
 }
 .info-entry-container{
   border: black 3px solid;
-  width: 100%;
+
   padding: 1rem;
   overflow: scroll;
   height: 90vh;
+  flex-grow: 1;
   scrollbar-shadow-color: #d33a3a;
 }
-input[type="month" i]{
+/* input[type="month" i]{
   padding-inline-start: 0px;
-} 
+}  */
 .info-entry-container::-webkit-scrollbar {
   width:10px;
 }
@@ -160,4 +171,28 @@ input[type="month" i]{
 
 .job-desc{
   white-space: pre-line;
+}
+
+.personalButton,
+.jobButton,
+.educationButton{
+margin-top: 2rem;
+border: 2px solid rgba(106, 106, 236, 0.385);
+}
+textarea{
+width: 85%;  
+}
+
+.sectionBorder{
+  padding: .2rem;
+  background-color: #213547 ;
+  margin-top: .5rem;
+}
+main{
+ display: flex; 
+ width: 100%;
+}
+.resume{
+  flex-grow: 400;
+
 }
