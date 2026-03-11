@@ -8,7 +8,8 @@ import { RenderPersonalInfo } from './componets/renderpersonalinfo.jsx'
 import { JobUi } from './componets/renderjobhistory.jsx'
 import { EducationInput } from './componets/education.jsx'
 import { RenderEducation } from './componets/rendereducation.jsx'
-
+import { Link } from './componets/linksinput.jsx'
+import { Summary } from './componets/summary.jsx'
 const cssStyles = [
   {borderLeft:"blue .2rem solid",
     
@@ -23,7 +24,16 @@ function App() {
   const [values,setValues] = useState({FirstName:'',LastName:'',age:'',email:'',phone:''})
   const [personalInfoResume,setPersonalInfoResume] = useState(false)
   const [allSchools,setAllSchools] = useState([])
+  const [allLinks,setAllLinks] = useState([])
+  const [links,setLinks] = useState({ 
+    Linkdin: "",
+    Instagram:"",
+    Youtube:"",
+    Github:"",
+    Facebook:""
+  })
   const [educationValues, setEducationValues] = useState({schoolName:"",degreeObtained:'',gpa:'',typeOfDegree:'',graduationMonth:'Jan',graduationYear:"",currentEnrol: false})
+  const [summary,setSummary] = useState("")
   return (
     <main>
       <div className="info-entry-container">
@@ -40,13 +50,20 @@ function App() {
           setJobsInfo((prev)=>{return {...prev,id:id}})}} setJobObj = {setJobsInfo} setAllJobs = {setAllJobs}
         />
       </section>
-      <section>
-        <EducationInput educationValues={educationValues} change = {(e)=>inputChange(e,setEducationValues)} 
+      <section><EducationInput educationValues={educationValues} change = {(e)=>inputChange(e,setEducationValues)} 
+        
         optionSelect = {(e)=>{console.log(e.target.name);setEducationValues({...educationValues,[e.target.name]:e.target.value})}} 
         changeCurrentEnrol={()=>(setEducationValues({...educationValues,currentEnrol : !educationValues.currentEnrol}))} render = {setAllSchools}
         allSchools = {allSchools} idSet = {()=>{
           setEducationValues((prev)=>{return {...prev,id:crypto.randomUUID()}})}} setEducationObj = {setEducationValues}
         />  
+      </section>
+      <section><Link links = {links} change = {(event)=>inputChange(event,setLinks)}/>
+        
+      </section>
+      <section> <Summary summary = {summary} change = {
+        (e) => {setSummary(e.target.value)}} />
+
       </section>
       </div>
       <div className="resume">

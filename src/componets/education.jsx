@@ -75,6 +75,7 @@ return (
     </div>
 
     <button type="submit" className="educationButton">Add New School</button>
+    <div className="sectionBorder"></div>
     </form>
 </>
 )    

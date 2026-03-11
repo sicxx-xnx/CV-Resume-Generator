@@ -150,6 +150,7 @@ width: 50%;
   overflow: scroll;
   height: 90vh;
   flex-grow: 1;
+  max-width: 40%;
   scrollbar-shadow-color: #d33a3a;
 }
 /* input[type="month" i]{
@@ -181,6 +182,7 @@ border: 2px solid rgba(106, 106, 236, 0.385);
 }
 textarea{
 width: 85%;  
+resize: none;
 }
 
 .sectionBorder{
