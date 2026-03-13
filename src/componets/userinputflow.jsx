@@ -1,21 +1,50 @@
+import { EducationInput } from "./education"
+import { JobHistory } from "./jobhistory"
+import { Link } from "./linksinput"
+import PersonalInfo from "./personalinfo"
+import { SkillInput } from "./skills"
+import { Summary } from "./summary"
+import { inputChange } from "../helperfunctions/inputChange"
 
 
-function userInputFlow(props){
-switch (props.userstep) {
+export function UserInputFlow(props){
+switch (props.userFlow) {
     case 1:
-        return (<PersonalInfo values = {values} change = {(event)=>inputChange(event,setValues)} submit = {(e)=> {
-                  e.preventDefault()
-                  setPersonalInfoResume(true)}}/>)
+    return (<PersonalInfo values = {props.userInputValues} change = {(event)=>inputChange(event,props.setUserValues)} submit = {props.submitUser}/>)
     case 2: 
-        return (<JobHistory values = {jobsInfo} change ={(event)=>inputChange(event,setJobsInfo)} 
-                    render = {setAllJobs} jobsArray = {allJobs} idSet = {()=>{
-                    setID(id++)
-                    setJobsInfo((prev)=>{return {...prev,id:id}})}} setJobObj = {setJobsInfo} setAllJobs = {setAllJobs}
+    return (<JobHistory values = {props.jobValues} change ={props.changeJobValues} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
+                    render = {props.renderJobs} jobsArray = {props.jobsArray} idSet = {props.jobIdSet} setJobObj = {props.setJobObj} setAllJobs = {props.setAllJobs}
                     />
         )
     case 3: 
-    return()    
-
+    return(<EducationInput educationValues={props.educationValues} change = {props.changeEducationValues} 
+            optionSelect = {(e)=>{console.log(e.target.name);props.setEducationObj({...props.educationValues,[e.target.name]:e.target.value})}} 
+            changeCurrentEnrol={()=>(props.setEducationObj({...props.educationValues,currentEnrol : !props.educationValues.currentEnrol}))} render = {props.educationRender}
+            allSchools = {props.allSchools} idSet = {props.EducationIdSet} setEducationObj = {props.setEducationObj} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
+            />  )  
+    case 4:
+        return( <Link links = {props.links} change = {props.changeLink}/>
+        ) 
+    case 5: 
+        return (
+            <Summary summary = {summary} change = {
+                    (e) => {setSummary(e.target.value)}} showSummary = {()=>{setSummaryVisibility(()=>{return true})}} />
+        )         
+    case 6: 
+        return ( <SkillInput skill = {skill} changeSkill = {(e)=>{setSkill((prev)=>({...prev, value:e.target.value}))}} addSkill = {(e)=>{
+              e.preventDefault()  
+              const newObj = {
+               ...skill,
+               id: crypto.randomUUID() 
+              }
+              setAllSkills((prev)=>[...prev, newObj])
+              setSkill({value:""})
+            }
+        
+            } 
+              
+              />
+        )    
     default:
         break;
 }

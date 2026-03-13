@@ -13,6 +13,7 @@ import { Summary } from './componets/summary.jsx'
 import { RenderSkills, SkillInput } from './componets/skills.jsx'
 import { RenderLinks } from './componets/renderLinks.jsx'
 import { RenderSummary } from './componets/rendersummary.jsx'
+import { UserInputFlow } from './componets/userinputflow.jsx'
 const cssStyles = [
   {borderLeft:"blue .2rem solid",
     
@@ -41,31 +42,40 @@ function App() {
   const [summaryVisibility,setSummaryVisibility] = useState(false)
   const [skill,setSkill] = useState({value:''})
   const [allSkills, setAllSkills] = useState([])
+  const [userFlow, setUserFlow] = useState(1)
   return (
-    <main>
-      <div className="info-entry-container">
-      <section className='personalInfo'>
-        <h2>Personal Information</h2>
-        <PersonalInfo values = {values} change = {(event)=>inputChange(event,setValues)} submit = {(e)=> {
+<main>
+  <div className="info-entry-container">
+       <section>< UserInputFlow 
+       userFlow = {userFlow}
+       userFlowNextStep = {()=>setUserFlow(()=> {
+        return userFlow + 1})}
+       userFlowPreviousStep = {()=>setUserFlow(()=> {
+        return userFlow - 1})}
+      //  begin user props
+       userInputValues = {values} setUserValues = {setValues} submitUser = {(e)=> {
           e.preventDefault()
-          setPersonalInfoResume(true)}}/>
-      </section>
-      <section className='jobHistory'>
-        <JobHistory values = {jobsInfo} change ={(event)=>inputChange(event,setJobsInfo)} 
-        render = {setAllJobs} jobsArray = {allJobs} idSet = {()=>{
+          setPersonalInfoResume(true)
+        setUserFlow(()=> {return userFlow + 1})
+        }}  
+      // begin job history props    
+          jobValues = {jobsInfo} changeJobValues = {(event)=>inputChange(event,setJobsInfo)} jobsArray = {allJobs}
+          renderJobs = {setAllJobs} jobIdSet = {()=>{
             setID(id++)
-          setJobsInfo((prev)=>{return {...prev,id:id}})}} setJobObj = {setJobsInfo} setAllJobs = {setAllJobs}
-        />
-      </section>
-      <section><EducationInput educationValues={educationValues} change = {(e)=>inputChange(e,setEducationValues)} 
-        
-        optionSelect = {(e)=>{console.log(e.target.name);setEducationValues({...educationValues,[e.target.name]:e.target.value})}} 
-        changeCurrentEnrol={()=>(setEducationValues({...educationValues,currentEnrol : !educationValues.currentEnrol}))} render = {setAllSchools}
-        allSchools = {allSchools} idSet = {()=>{
-          setEducationValues((prev)=>{return {...prev,id:crypto.randomUUID()}})}} setEducationObj = {setEducationValues}
-        />  
-      </section>
-      <section><Link links = {links} change = {(event)=>inputChange(event,setLinks)}/>
+          setJobsInfo((prev)=>{return {...prev,id:id}})}}
+          setJobObj = {setJobsInfo} setAllJobs = {setAllJobs}
+      // begin education props
+          educationValues={educationValues} changeEducationValues = {(e)=>inputChange(e,setEducationValues)} setEducationObj = {setEducationValues}
+          educationRender = {setAllSchools} allSchools = {allSchools} EducationIdSet = {()=>{
+          setEducationValues((prev)=>{return {...prev,id:crypto.randomUUID()}})}} 
+      // Begin Link Props 
+        links = {links} changeLink = {(event)=>inputChange(event,setLinks)}
+/>
+          
+          
+          </section> 
+    
+      <section>
         
       </section>
       <section> <Summary summary = {summary} change = {

@@ -55,7 +55,7 @@ function Job (props){
             <label htmlFor="desc">Position Overview </label>
             <textarea name="desc" id="desc" cols="30" rows="10" required value={props.value.desc} onChange={props.change}></textarea>
         </div>
-        <button type="submit" className="jobButton">Add Professional Experience</button>
+       <div><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button><button type="submit" className="jobButton">Add Professional Experience</button><button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
         <div className="sectionBorder"></div>
         </form>
     </>
@@ -67,7 +67,7 @@ function Job (props){
 function JobHistory(props){
 
 return (
-<Job value = {props.values} change = {props.change} render = {props.render} setJobObj = {props.setJobObj} jobsArray = {props.jobsArray} idSet={props.idSet} />
+<Job value = {props.values} userFlowPreviousStep = {props.userFlowPreviousStep} userFlowNextStep={props.userFlowNextStep} change = {props.change} render = {props.render} setJobObj = {props.setJobObj} jobsArray = {props.jobsArray} idSet={props.idSet} />
 )    
 }
 
