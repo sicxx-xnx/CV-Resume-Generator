@@ -70,33 +70,27 @@ function App() {
           setEducationValues((prev)=>{return {...prev,id:crypto.randomUUID()}})}} 
       // Begin Link Props 
         links = {links} changeLink = {(event)=>inputChange(event,setLinks)}
+      // summary props
+      summary = {summary} changeSummary = {(e) => {setSummary(e.target.value)}} showSummary = {()=>{setSummaryVisibility(()=>{return true})}}
+      // skill props
+        skill = {skill} changeSkill = {(e)=>{setSkill((prev)=>({...prev, value:e.target.value}))}}
+        addSkill = {(e)=>{
+              e.preventDefault()  
+              const newObj = {
+              ...skill,
+              id: crypto.randomUUID() 
+              }
+              setAllSkills((prev)=>[...prev, newObj])
+              setSkill({value:""})
+            }}
+
 />
           
           
           </section> 
     
-      <section>
-        
-      </section>
-      <section> <Summary summary = {summary} change = {
-        (e) => {setSummary(e.target.value)}} showSummary = {()=>{setSummaryVisibility(()=>{return true})}} />
 
-      </section>
-      <section> <SkillInput skill = {skill} changeSkill = {(e)=>{setSkill((prev)=>({...prev, value:e.target.value}))}} addSkill = {(e)=>{
-      e.preventDefault()  
-      const newObj = {
-       ...skill,
-       id: crypto.randomUUID() 
-      }
-      setAllSkills((prev)=>[...prev, newObj])
-      setSkill({value:""})
-    }
 
-    } 
-      
-      />
-
-      </section>
       </div>
       <div className="resume">
       <section className='personalInfoResume'>

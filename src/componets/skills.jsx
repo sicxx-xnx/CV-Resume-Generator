@@ -9,7 +9,7 @@ export function SkillInput(prop){
     return (
      <>
         <h2>Skills</h2>
-        <div className="skill-added"><p>Skill</p></div>
+        <div className="skill-added"></div>
        <form action="post" onSubmit={prop.addSkill}>
             <label htmlFor="skills"> New Skill
                 <input type="text" name="skills" id="skills" value={prop.skill.value} onChange={prop.changeSkill} />

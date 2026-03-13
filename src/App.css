@@ -1,6 +1,7 @@
 #root {
   box-sizing: border-box;
   text-align: start;
+  width: 100%;
 }
 button{
   width: 100%;
@@ -150,6 +151,7 @@ width: 50%;
   overflow: scroll;
   height: 90vh;
   flex-grow: 1;
+  width: 35%;
   max-width: 35%;
   scrollbar-shadow-color: #d33a3a;
 }

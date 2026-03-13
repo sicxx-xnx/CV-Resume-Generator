@@ -23,27 +23,15 @@ switch (props.userFlow) {
             allSchools = {props.allSchools} idSet = {props.EducationIdSet} setEducationObj = {props.setEducationObj} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
             />  )  
     case 4:
-        return( <Link links = {props.links} change = {props.changeLink}/>
+        return( <Link links = {props.links} change = {props.changeLink} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
+        />
         ) 
     case 5: 
         return (
-            <Summary summary = {summary} change = {
-                    (e) => {setSummary(e.target.value)}} showSummary = {()=>{setSummaryVisibility(()=>{return true})}} />
+            <Summary summary = {props.summary} change = {props.changeSummary} showSummary = {props.showSummary} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}/>
         )         
     case 6: 
-        return ( <SkillInput skill = {skill} changeSkill = {(e)=>{setSkill((prev)=>({...prev, value:e.target.value}))}} addSkill = {(e)=>{
-              e.preventDefault()  
-              const newObj = {
-               ...skill,
-               id: crypto.randomUUID() 
-              }
-              setAllSkills((prev)=>[...prev, newObj])
-              setSkill({value:""})
-            }
-        
-            } 
-              
-              />
+        return ( <SkillInput skill = {props.skill} changeSkill = {props.changeSkill} addSkill = {props.addSkill} />
         )    
     default:
         break;
