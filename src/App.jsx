@@ -10,6 +10,9 @@ import { EducationInput } from './componets/education.jsx'
 import { RenderEducation } from './componets/rendereducation.jsx'
 import { Link } from './componets/linksinput.jsx'
 import { Summary } from './componets/summary.jsx'
+import { RenderSkills, SkillInput } from './componets/skills.jsx'
+import { RenderLinks } from './componets/renderLinks.jsx'
+import { RenderSummary } from './componets/rendersummary.jsx'
 const cssStyles = [
   {borderLeft:"blue .2rem solid",
     
@@ -32,8 +35,12 @@ function App() {
     Github:"",
     Facebook:""
   })
+
   const [educationValues, setEducationValues] = useState({schoolName:"",degreeObtained:'',gpa:'',typeOfDegree:'',graduationMonth:'Jan',graduationYear:"",currentEnrol: false})
   const [summary,setSummary] = useState("")
+  const [summaryVisibility,setSummaryVisibility] = useState(false)
+  const [skill,setSkill] = useState({value:''})
+  const [allSkills, setAllSkills] = useState([])
   return (
     <main>
       <div className="info-entry-container">
@@ -62,7 +69,22 @@ function App() {
         
       </section>
       <section> <Summary summary = {summary} change = {
-        (e) => {setSummary(e.target.value)}} />
+        (e) => {setSummary(e.target.value)}} showSummary = {()=>{setSummaryVisibility(()=>{return true})}} />
+
+      </section>
+      <section> <SkillInput skill = {skill} changeSkill = {(e)=>{setSkill((prev)=>({...prev, value:e.target.value}))}} addSkill = {(e)=>{
+      e.preventDefault()  
+      const newObj = {
+       ...skill,
+       id: crypto.randomUUID() 
+      }
+      setAllSkills((prev)=>[...prev, newObj])
+      setSkill({value:""})
+    }
+
+    } 
+      
+      />
 
       </section>
       </div>
@@ -70,7 +92,7 @@ function App() {
       <section className='personalInfoResume'>
         {personalInfoResume?<RenderPersonalInfo jobs={allJobs} values = {values}/>:null}
       </section>
-        <div style={{display:"flex", paddingLeft:"4rem", gap:".5rem", paddingTop:"1rem"}}>
+        <div style={{display:"flex", paddingLeft:"6rem",paddingRight:"6rem", gap:".5rem", paddingTop:"1rem"}}>
           <div className="">
             <section>
               {allJobs?<JobUi values = {allJobs} setAllJobs = {setAllJobs}/>:false}
@@ -82,7 +104,14 @@ function App() {
         
         <div className="" style={cssStyles[0]} >
           <section>
-
+              <RenderLinks links = {links}/>
+              <div style={{height:".2rem", backgroundColor:"blue" }}></div>
+          </section>
+          <section>
+            {summaryVisibility?<RenderSummary summaryValue= {summary}/>:null}
+          </section>
+          <section>
+            <RenderSkills skillsArray = {allSkills}/>
           </section>
         </div>
       </div>

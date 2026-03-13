@@ -150,7 +150,7 @@ width: 50%;
   overflow: scroll;
   height: 90vh;
   flex-grow: 1;
-  max-width: 40%;
+  max-width: 35%;
   scrollbar-shadow-color: #d33a3a;
 }
 /* input[type="month" i]{

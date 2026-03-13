@@ -6,7 +6,7 @@ return (
             (job)=>(
                 <li className="jobList" style={{listStyle:"none"}} key={job.jobName}>
                     <div className="job">
-                        <div className="jobTitleDiv"><h2>{job.jobName}</h2><button type="button" onClick={()=>{props.setAllJobs(props.values.filter((a)=>{return a.id !== job.id}))}}>x</button></div>
+                        <div className="jobTitleDiv"><h3>{job.jobName}</h3><button type="button" onClick={()=>{props.setAllJobs(props.values.filter((a)=>{return a.id !== job.id}))}}>x</button></div>
                         <div className="" style={{display:"flex",marginTop:"-1rem", gap:"1rem", alignItems:"center"}}><h3>{job.companyName}</h3><p><i>{job.startDate} / {job.endDate?job.endDate:"Current job"}</i></p></div>
                         <div className="" style={{marginTop:"-1rem", maxWidth:'19rem'}}><p className="job-desc">{job.desc}</p></div>
                     </div>
