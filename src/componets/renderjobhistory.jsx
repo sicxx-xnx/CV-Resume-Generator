@@ -1,6 +1,14 @@
 function JobUi(props){
 return (
-    <><h2>Professional Experience</h2>
+    <>
+    <h2></h2>
+          <div style={{display:'flex',
+                       gap:'10px',
+                       justifyContent:'space-between',
+                       alignItems:'center'}}>  
+                <h2>Professional Experience</h2> 
+                <button style={{height:"50%",width:"unset"}} onClick={props.edit}>Edit</button>
+        </div>
     <ul>
         {props.values.map(
             (job)=>(
@@ -14,7 +22,7 @@ return (
             )
         )}
     </ul>
-    <div className="" style={{height:".2rem", backgroundColor:"blue" }}></div>
+    <div className="divbordersection" style={{height:".2rem", backgroundColor:"blue" }}></div>
     </>
 )    
 }

@@ -23,7 +23,6 @@ return(
 pattern="^(\+?[0-9]{1,2} ?)?[0-9]{3}[ .\-]?[0-9]{3}[ .\-]?[0-9]{4}$"
  /></div>
 <button type="submit" className="personalButton">Submit Personal Info</button>
-<div className="sectionBorder"></div>
 </form>    
 )    
 }

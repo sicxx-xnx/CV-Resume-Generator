@@ -20,8 +20,8 @@ for (const key in props.links) {
 return (
 <><h2>Links</h2>    
 <ul style={{display:"flex",flexWrap:"wrap", listStyle:"none",paddingInlineStart:'inherit'}}>{linktypes}</ul>
-<div><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button><button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
-
-<div className="sectionBorder"></div></>   
+<div className="userflowButton"><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button>
+<button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
+</>   
 )    
 }

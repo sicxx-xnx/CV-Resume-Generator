@@ -15,6 +15,8 @@ export function SkillInput(prop){
                 <input type="text" name="skills" id="skills" value={prop.skill.value} onChange={prop.changeSkill} />
             </label>
             <button style={{marginTop:"1rem"}} type="submit">Submit</button>
+            <div className="userflowButton"><button type="button" onClick={prop.userFlowPreviousStep}>Previous Section</button>
+    <button type="button" onClick = {prop.userFlowNextStep}>Creat Resume</button></div> 
         </form>
      </>
     )
@@ -29,5 +31,13 @@ props.skillsArray.forEach((skill)=>
 })
 
  return (
+    <>
+    {skills.length < 1?null:
+    <div style={{display:"flex",gap:'10px',alignItems:'anchor-center'}}>
+        <h2 style={{paddingLeft:'.5rem'}}>
+            skills</h2> 
+            <button style={{height:"50%",width:"unset"}} onClick={props.edit}>Edit</button></div>
+}
     <ul>{skills}</ul>
+    </>
  )   }

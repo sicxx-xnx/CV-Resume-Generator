@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { renderToPipeableStream } from "react-dom/server"
+import { ChangePopupdisplay } from "../helperfunctions/popup"
 
 let count = 0
 function Job (props){
@@ -7,7 +7,8 @@ function Job (props){
     return(
     <>
     <form action="" onSubmit={(e)=>{
-            e.preventDefault()
+            e.preventDefault(props.popup)
+            ChangePopupdisplay(props.changePopupVisibility,props.changePopupText,"Professional Experience Added!",props.setPopupClass)
             const newJobObject = {
                ...props.value,
                id:crypto.randomUUID()
@@ -55,8 +56,9 @@ function Job (props){
             <label htmlFor="desc">Position Overview </label>
             <textarea name="desc" id="desc" cols="30" rows="10" required value={props.value.desc} onChange={props.change}></textarea>
         </div>
-       <div><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button><button type="submit" className="jobButton">Add Professional Experience</button><button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
-        <div className="sectionBorder"></div>
+       <button type="submit" className="jobButton">Add Professional Experience</button>   
+       <div className="userflowButton"><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button>
+    <button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
         </form>
     </>
     )
@@ -67,7 +69,7 @@ function Job (props){
 function JobHistory(props){
 
 return (
-<Job value = {props.values} userFlowPreviousStep = {props.userFlowPreviousStep} userFlowNextStep={props.userFlowNextStep} change = {props.change} render = {props.render} setJobObj = {props.setJobObj} jobsArray = {props.jobsArray} idSet={props.idSet} />
+<Job value = {props.values} setPopupClass = {props.setPopupClass} changePopupVisibility = {props.changePopupVisibility} changePopupText = {props.changePopupText} userFlowPreviousStep = {props.userFlowPreviousStep} userFlowNextStep={props.userFlowNextStep} change = {props.change} render = {props.render} setJobObj = {props.setJobObj} jobsArray = {props.jobsArray} idSet={props.idSet} />
 )    
 }
 

@@ -80,7 +80,7 @@ textarea{
 }
 .person-info-row{
 display: flex;  
-padding: 3em 0 0px 0;
+padding: 1em 0 0px 0;
 align-items: start;
 justify-content: start;
 gap: 1rem;
@@ -146,13 +146,10 @@ width: 50%;
 }
 .info-entry-container{
   border: black 3px solid;
-
   padding: 1rem;
   overflow: scroll;
-  height: 90vh;
+height: fit-content;
   flex-grow: 1;
-  width: 35%;
-  max-width: 35%;
   scrollbar-shadow-color: #d33a3a;
 }
 /* input[type="month" i]{
@@ -195,8 +192,51 @@ resize: none;
 main{
  display: flex; 
  width: 100%;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 }
-.resume{
-  flex-grow: 400;
 
+.userflowButton{
+  display: flex;
+  margin-top: 1em;
+}
+.userflowButton > button{
+  width: 50%;
+}
+.popup{
+animation: popupenter 1s ease-out forwards;
+justify-self: center;
+}
+.popup-remove {
+ animation: popupexit 1s ease-in forwards; 
+ justify-self: center;
+}
+
+@keyframes popupenter {
+  from {
+    width: 0%;
+  }
+  to{
+    width : 60%
+  }
+}
+
+@keyframes popupexit {
+  from{width: 60%;}
+  to{width: 0%;}
+}
+
+@media print {
+  button{
+    display: none;
+  }
+  .personalInfoResume{
+    background-color: blue !important;
+    print-color-adjust: exact;
+  }
+  .divbordersection{
+    background-color: blue !important;
+    print-color-adjust: exact; 
+  }
 }

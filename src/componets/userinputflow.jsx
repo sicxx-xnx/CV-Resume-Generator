@@ -14,6 +14,7 @@ switch (props.userFlow) {
     case 2: 
     return (<JobHistory values = {props.jobValues} change ={props.changeJobValues} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
                     render = {props.renderJobs} jobsArray = {props.jobsArray} idSet = {props.jobIdSet} setJobObj = {props.setJobObj} setAllJobs = {props.setAllJobs}
+                    setPopupClass = {props.setPopupClass} changePopupText = {props.changePopupText} changePopupVisibility = {props.changePopupVisibility}
                     />
         )
     case 3: 
@@ -21,6 +22,7 @@ switch (props.userFlow) {
             optionSelect = {(e)=>{console.log(e.target.name);props.setEducationObj({...props.educationValues,[e.target.name]:e.target.value})}} 
             changeCurrentEnrol={()=>(props.setEducationObj({...props.educationValues,currentEnrol : !props.educationValues.currentEnrol}))} render = {props.educationRender}
             allSchools = {props.allSchools} idSet = {props.EducationIdSet} setEducationObj = {props.setEducationObj} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
+            setPopupClass = {props.setPopupClass} changePopupText = {props.changePopupText} changePopupVisibility = {props.changePopupVisibility}
             />  )  
     case 4:
         return( <Link links = {props.links} change = {props.changeLink} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}
@@ -31,9 +33,10 @@ switch (props.userFlow) {
             <Summary summary = {props.summary} change = {props.changeSummary} showSummary = {props.showSummary} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep}/>
         )         
     case 6: 
-        return ( <SkillInput skill = {props.skill} changeSkill = {props.changeSkill} addSkill = {props.addSkill} />
+        return ( <SkillInput skill = {props.skill} userFlowNextStep = {props.userFlowNextStep} userFlowPreviousStep = {props.userFlowPreviousStep} changeSkill = {props.changeSkill} addSkill = {props.addSkill} />
         )    
     default:
+        return null
         break;
 }
     

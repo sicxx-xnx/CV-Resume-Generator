@@ -1,3 +1,4 @@
+import { ChangePopupdisplay } from "../helperfunctions/popup";
 import { PersonalInfoInput } from "./personalinfo";
 
 
@@ -34,6 +35,7 @@ return (
 <>
 <form action="" onSubmit={(e)=>{
         e.preventDefault()
+        ChangePopupdisplay(props.changePopupVisibility,props.changePopupText,"School Experience added",props.setPopupClass)
         const newEducationObj = {
         ...props.educationValues,
         id: crypto.randomUUID()    
@@ -73,8 +75,10 @@ return (
         </label> 
         
     </div>
-           <div className=""><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button><button type="submit" className="jobButton">Add New School</button><button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div> 
-    <div className="sectionBorder"></div>
+    <button type="submit" className="jobButton">Add New School</button>
+    <div className="userflowButton"><button type="button" onClick={props.userFlowPreviousStep}>Previous Section</button>
+    <button type="button" onClick = {props.userFlowNextStep}>Next Section</button></div>  
+ 
     </form>
 </>
 )    

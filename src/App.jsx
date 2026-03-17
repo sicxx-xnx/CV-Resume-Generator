@@ -14,6 +14,7 @@ import { RenderSkills, SkillInput } from './componets/skills.jsx'
 import { RenderLinks } from './componets/renderLinks.jsx'
 import { RenderSummary } from './componets/rendersummary.jsx'
 import { UserInputFlow } from './componets/userinputflow.jsx'
+import { RenderPopup } from './componets/popup.jsx'
 const cssStyles = [
   {borderLeft:"blue .2rem solid",
     
@@ -43,15 +44,32 @@ function App() {
   const [skill,setSkill] = useState({value:''})
   const [allSkills, setAllSkills] = useState([])
   const [userFlow, setUserFlow] = useState(1)
+  const [popupVisibile, changePopupVisibility] = useState(false)
+  const [popupText,changePopupText] = useState("")
+  const [popupClass, setPopupClass] = useState("")
   return (
 <main>
+    <div className="popupholder">
+   
+      {popupVisibile?
+      <RenderPopup text = {popupText} class = {popupClass}/>
+      
+      :null}
+    
+  </div>
+{userFlow !== 7?  
   <div className="info-entry-container">
-       <section>< UserInputFlow 
+    <section>
+
+      <UserInputFlow 
        userFlow = {userFlow}
        userFlowNextStep = {()=>setUserFlow(()=> {
         return userFlow + 1})}
        userFlowPreviousStep = {()=>setUserFlow(()=> {
         return userFlow - 1})}
+        changePopupText = {changePopupText}
+        changePopupVisibility = {changePopupVisibility}
+        setPopupClass = {setPopupClass}
       //  begin user props
        userInputValues = {values} setUserValues = {setValues} submitUser = {(e)=> {
           e.preventDefault()
@@ -82,44 +100,46 @@ function App() {
               }
               setAllSkills((prev)=>[...prev, newObj])
               setSkill({value:""})
-            }}
+            }}/>
+    </section> 
+  </div>
+:null}
 
-/>
-          
-          
-          </section> 
-    
-
-
-      </div>
-      <div className="resume">
+  {userFlow === 7? 
+  <div className="" style={{width:'60%',}}>
+  <div className="resume">
       <section className='personalInfoResume'>
-        {personalInfoResume?<RenderPersonalInfo jobs={allJobs} values = {values}/>:null}
+        {personalInfoResume?<RenderPersonalInfo edit = {()=>{(setUserFlow(()=>1))}}  jobs={allJobs} values = {values}/>:null}
       </section>
-        <div style={{display:"flex", paddingLeft:"6rem",paddingRight:"6rem", gap:".5rem", paddingTop:"1rem"}}>
+        <div style={{display:"flex", paddingLeft:"2rem",paddingRight:"2rem", gap:".5rem", paddingTop:"1rem"}}>
           <div className="">
             <section>
-              {allJobs?<JobUi values = {allJobs} setAllJobs = {setAllJobs}/>:false}
+              {allJobs?<JobUi values = {allJobs} edit = {()=>{(setUserFlow(()=>2))}} setAllJobs = {setAllJobs}/>:false}
             </section>
             <section>
-              {allSchools?<RenderEducation array = {allSchools} setAllSchools={setAllSchools}/>:null }
+              {allSchools?<RenderEducation  edit = {()=>{(setUserFlow(()=>3))}} array = {allSchools} setAllSchools={setAllSchools}/>:null }
             </section>
          </div>
         
         <div className="" style={cssStyles[0]} >
           <section>
-              <RenderLinks links = {links}/>
-              <div style={{height:".2rem", backgroundColor:"blue" }}></div>
+              <RenderLinks links = {links} edit = {()=>{(setUserFlow(()=>4))}}  />
+              <div className='divbordersection' style={{height:".2rem", backgroundColor:"blue" }}></div>
           </section>
           <section>
-            {summaryVisibility?<RenderSummary summaryValue= {summary}/>:null}
+            {summaryVisibility?<RenderSummary edit = {()=>{(setUserFlow(()=>5))}} summaryValue= {summary}/>:null}
           </section>
           <section>
-            <RenderSkills skillsArray = {allSkills}/>
+            <RenderSkills edit = {()=>{(setUserFlow(()=>6))}} skillsArray = {allSkills}/>
+          </section>
+          <section>
+            <button type='click' onClick={()=>window.print()}>Print Resume</button>
           </section>
         </div>
       </div>
-        </div>
+      </div>
+      </div> :null}
+        
     </main>
   )
 }
